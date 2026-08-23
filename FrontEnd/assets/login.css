@@ -1,0 +1,87 @@
+body.login-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body.login-page main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+#login {
+    margin-top: 90px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 90px;
+}
+
+p{
+    margin-bottom: 15px;
+    align-self: center;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: 700;
+    align-self: center;
+    margin-bottom: 35px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+form input {
+    width: 379px;
+    height: 51px;
+    margin-bottom: 25px;
+    border: none;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.09);
+
+}
+
+form input:focus {
+    outline: 1px solid #1D6154;
+}
+
+form button {
+    width: 179px;
+    height: 39px;
+    border: none;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.09);
+    cursor: pointer;
+    border-radius: 60px;
+    background-color: rgba(29, 97, 84, 1);
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    font: inherit;
+    align-self: center;
+    margin-top: 15px;
+}
+
+form a {
+    display: inline-block;
+    align-self: center;
+    margin-top: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    color: rgba(61, 61, 61, 1);
+    border-bottom: 1px solid rgba(61, 61, 61, 1);
+}
+footer nav ul {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 2em 0 0;
+}
