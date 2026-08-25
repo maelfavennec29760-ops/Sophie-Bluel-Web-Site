@@ -1,5 +1,9 @@
-const errorP = document.getElementById("error")
+
+
 const formLogin = document.querySelector("form")
+
+const errorP = document.getElementById("error")
+
 
 formLogin.addEventListener("submit", async (event) => {
     event.preventDefault();
