@@ -7,6 +7,7 @@ import { galleryGenerator } from "./galleryGenerator.js";
     const tous = document.createElement("button");
     tous.innerText = "Tous";
     tous.addEventListener("click", () => {
+        effectButton(tous);
         galleryGenerator(works);
     });
     containerFilter.appendChild(tous);
@@ -20,12 +21,22 @@ function buttonsGenerator () {
         
         button.addEventListener("click", () => {
             const filteredWorks = categoriesFilter(categories[i].id);
+            effectButton(button);
             galleryGenerator(filteredWorks);
         })
         containerFilter.appendChild(button);
     } 
 }
 buttonsGenerator();
+
+//Effet active
+function effectButton(button) {
+    const buttonEffect = document.querySelectorAll("button")
+    for(let i = 0; i < buttonEffect.length; i++) {
+        buttonEffect[i].classList.remove("active")
+    }
+    button.classList.add("active")
+}
 
 //Gestion du filtre par catergories
 function categoriesFilter(categoryId) {
