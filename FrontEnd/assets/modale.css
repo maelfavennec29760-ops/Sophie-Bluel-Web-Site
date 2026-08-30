@@ -9,9 +9,12 @@
     justify-content: center;
     align-items: center;
 }
+
+/* Classe unique pour masquer n'importe quel élément */
 .hidden {
-    display: none;
+    display: none !important;
 }
+
 .modal-window {
     width: 630px;
     height: 688px;
@@ -37,7 +40,7 @@
     font-size: 18px;
 }
 
-.modal-window h2 {
+.modal-container h2 {
     margin-top: 60px;
     margin-bottom: 46px;
     text-align: center;
@@ -64,7 +67,8 @@
     object-fit: cover;
 }
 
-.modal-window hr {
+.modal-window hr,
+.modal-add hr {
     width: 420px;
     margin: 47px auto 38px;
     border: none;
@@ -108,4 +112,99 @@
 .modal-gallery i {
     font-size: 10px;
     filter: invert(1);
+}
+
+/* ---------------- MODAL AJOUT ---------------- */
+
+.modal-add {
+    width: 630px;
+    height: 688px;
+    background: #fff;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.modal-back {
+    position: absolute;
+    top: 26px;
+    left: 26px;
+    width: 24px;
+    height: 24px;
+    font-size: 21px;
+    font-weight: 300;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.modal-add form {
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-add form > label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.modal-add form > label > input,
+.modal-add form > label > select {
+    height: 51px;
+    border: none;
+    box-shadow: 0px 4px 14px rgba(0,0,0,.09);
+}
+
+.upload-area {
+    width: 420px;
+    height: 169px;
+    background: rgb(232,241,246);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding-top: 10px;
+    margin-bottom: 24px;
+}
+
+.upload-area i {
+    font-size: 76px;
+    color: rgb(185,197,204);
+}
+
+.upload-area label {
+    width: 173px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(185,197,204);
+    border-radius: 50px;
+    color: rgb(48,102,133);
+}
+
+.upload-area p {
+    font-size: 10px;
+}
+
+.modal-add hr {
+    margin: 20px 0 30px;
+}
+
+.modal-add form > button {
+    width: 237px;
+    height: 36px;
+    border-radius: 60px;
+    border: none;
+    background: rgb(167,167,167);
+    color: white;
+    font-family: inherit;
+    align-self: center;
+    cursor: pointer;
 }

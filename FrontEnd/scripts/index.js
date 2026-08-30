@@ -31,7 +31,6 @@ if (token) {
     textModify.innerText = "Modifier";
 
     portfolioTitle.appendChild(linkModify);
-    console.log("Lien créé");
     linkModify.appendChild(iconeModify);
     linkModify.appendChild(textModify);
 
