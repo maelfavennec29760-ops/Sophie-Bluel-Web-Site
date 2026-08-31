@@ -14,4 +14,9 @@
 - Disable the submit button until the form is valid
 - Automatic gallery refresh after project creation
 - Reset the add project form when closing the modal
+<<<<<<< HEAD
 
+=======
+- Success and error messages after project submission
+- Closing modal after photo upload
+>>>>>>> 534074a (fix: close modal after successful photo upload)

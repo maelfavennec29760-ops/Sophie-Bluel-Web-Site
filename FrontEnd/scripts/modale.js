@@ -184,7 +184,12 @@ async function addPicture() {
         body: formData,
     })
     if(response.ok){
-        modalContainer.classList.add("hidden");
+        validateMessage.classList.remove("hidden");
+
+        setTimeout(() => {
+            validateMessage.classList.add("hidden")
+        }, 3000);
+
         const works = await getWorks();
         galleryGenerator(works);
         modalWorksGenerator(works);
@@ -249,3 +254,4 @@ function resetModalAdd() {
     
     checkFormValidity();
 }
+
