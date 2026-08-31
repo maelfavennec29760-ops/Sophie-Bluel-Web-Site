@@ -14,4 +14,4 @@
 - Disable the submit button until the form is valid
 - Automatic gallery refresh after project creation
 - Reset the add project form when closing the modal
-- Success and error messages after project submission
+
