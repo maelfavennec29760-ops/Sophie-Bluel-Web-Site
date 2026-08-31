@@ -164,6 +164,9 @@
 .upload-area {
     width: 420px;
     height: 169px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
     background: rgb(232,241,246);
     display: flex;
     flex-direction: column;
@@ -207,4 +210,14 @@
     font-family: inherit;
     align-self: center;
     cursor: pointer;
+}
+
+#preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
 }

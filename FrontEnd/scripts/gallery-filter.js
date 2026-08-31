@@ -1,5 +1,5 @@
 //Imports
-import {works, categories} from "./api.js";
+import {getWorks, categories} from "./api.js";
 import { galleryGenerator } from "./galleryGenerator.js";
 
 // Génération du bouton TOUS (afficher les travaux sans filtre)

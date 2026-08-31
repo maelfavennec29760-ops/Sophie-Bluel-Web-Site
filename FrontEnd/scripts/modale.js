@@ -1,7 +1,7 @@
 //Modale Galerie photo
 
 //Récuperer les travaux via l'API
-import {works} from "./api.js";
+import { getWorks } from "./api.js";
 import { galleryGenerator } from "./galleryGenerator.js";
 
 //Récuperer les élements necéssaires
@@ -10,6 +10,7 @@ const modalContainer = document.querySelector(".modal-container");
 const modalWindow = document.querySelector(".modal-window");
 const modalClose = document.querySelector(".modal-close");
 const modalGallery = document.querySelector(".modal-gallery");
+const modalAddPreview = document.getElementById("preview-img")
 
 //Afficher la modale
 
@@ -57,7 +58,13 @@ function modalWorksGenerator(modalWorks) {
     });
 }
 
-modalWorksGenerator(works);
+async function initModalGallery() {
+    const works = await getWorks();
+    modalWorksGenerator(works);
+    trashIdWorks();
+}
+
+initModalGallery();
 
 //Suppression travaux 
 
@@ -84,19 +91,19 @@ async function deleteWork(id) {
         }
     }) 
     if (workDelete.ok) {
-        const refreshedWorks = await refreshWorks();
-        galleryGenerator(refreshedWorks);
-        modalWorksGenerator(refreshedWorks);
-        
+        const works = await getWorks();
+        galleryGenerator(works);
+        modalWorksGenerator(works);
+        trashIdWorks();
     }
 }
 
 //Afficher la liste de travaux avec les modifications
-async function refreshWorks() {
-    const response = await fetch("http://localhost:5678/api/works");
-    const refreshedWorks = await response.json();
-    return refreshedWorks;
-}
+//async function refreshWorks() {
+//    const response = await fetch("http://localhost:5678/api/works");
+//    const refreshedWorks = await response.json();
+//    return refreshedWorks;
+//}
 
 trashIdWorks();
 
@@ -146,3 +153,62 @@ async function categorySelect() {
 }
 
 categorySelect();
+
+//Ajout d'une image
+
+async function addPicture() {
+
+    const imageFile = document.querySelector("#project-img");
+    const file = imageFile.files[0];
+    const titleFile = document.getElementById("title");
+    const title = titleFile.value
+    const categoryFile = document.getElementById("categories")
+    const category = categoryFile.value
+
+
+    const formData = new FormData();
+
+    formData.append("image", file);
+    formData.append("title", title);
+    formData.append("category", category);
+
+    const token = localStorage.getItem("token")
+
+    const response = await fetch ("http://localhost:5678/api/works", {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+        body: formData,
+    })
+    if(response.ok){
+        const data = await response.json()
+        const works = await getWorks()
+        galleryGenerator(works);
+        modalWorksGenerator(works)
+        trashIdWorks();
+    } else {
+        console.log("error")
+    }
+}
+
+//Appel de la fonction lord du click sur le bouton "Validé"
+
+const validationBtn = document.querySelector(".valide")
+validationBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    addPicture()
+})
+
+//Previsualisation de l'image dans l'input
+const imageFile = document.querySelector("#project-img");
+imageFile.addEventListener("change", () => {
+    const imageFile = document.querySelector("#project-img");
+    const previewImg = document.querySelector("#preview-img")
+    const file = imageFile.files[0];
+    if(file) {
+        previewImg.classList.remove("hidden")
+        const imgUrl = URL.createObjectURL(file);
+        previewImg.src = imgUrl
+    }
+})
