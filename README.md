@@ -18,5 +18,8 @@
 
 =======
 - Success and error messages after project submission
+<<<<<<< HEAD
 - Closing modal after photo upload
 >>>>>>> 534074a (fix: close modal after successful photo upload)
+=======
+>>>>>>> 6853de3 (fix: close modal after successful photo upload)
