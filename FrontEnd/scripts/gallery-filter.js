@@ -2,13 +2,21 @@
 import {getWorks, categories} from "./api.js";
 import { galleryGenerator } from "./galleryGenerator.js";
 
+async function initGallery() {
+    const works = await getWorks();
+    galleryGenerator(works);
+}
+
+initGallery()
+
 // Génération du bouton TOUS (afficher les travaux sans filtre)
     const containerFilter = document.querySelector(".container-filter");
     const tous = document.createElement("button");
     tous.innerText = "Tous";
-    tous.addEventListener("click", () => {
+    tous.addEventListener("click", async () => {
+        const works = await getWorks();
         effectButton(tous);
-        galleryGenerator(works);
+       galleryGenerator(works);
     });
     containerFilter.appendChild(tous);
 
@@ -19,8 +27,8 @@ function buttonsGenerator () {
         const button = document.createElement("button");
         button.innerText = categories[i].name;
         
-        button.addEventListener("click", () => {
-            const filteredWorks = categoriesFilter(categories[i].id);
+        button.addEventListener("click",async  ()  =>  {
+            const filteredWorks = await categoriesFilter(categories[i].id);
             effectButton(button);
             galleryGenerator(filteredWorks);
         })
@@ -36,16 +44,19 @@ function effectButton(button) {
         buttonEffect[i].classList.remove("active")
     }
     button.classList.add("active")
+
 }
 
 //Gestion du filtre par catergories
-function categoriesFilter(categoryId) {
+async function categoriesFilter(categoryId) {
+    const works = await getWorks();
     const filteredWorks = [];
     for(let i = 0; i < works.length; i++) {
         if(works[i].categoryId === categoryId) {
             filteredWorks.push(works[i]);
         }
     }
+    
     return filteredWorks;
 }
 

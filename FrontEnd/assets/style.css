@@ -193,12 +193,12 @@ a:hover {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 20px;
-	grid-row-gap: 20px;
+	grid-row-gap: 30px;
 }
 
 .gallery img {
 	width: 100%;
-
+	max-height: 450px;
 }
 #contact {
 	width: 50%;

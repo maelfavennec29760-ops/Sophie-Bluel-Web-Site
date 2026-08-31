@@ -1,5 +1,3 @@
-//Imports
-import {getWorks} from "./api.js";
 
 export function galleryGenerator(workToDisplay) {
     const gallery = document.querySelector(".gallery");
@@ -16,10 +14,3 @@ export function galleryGenerator(workToDisplay) {
         figure.appendChild(figcaptation);
     });
 }
-
-async function initGallery() {
-    const works = await getWorks();
-    galleryGenerator(works);
-}
-
-initGallery()

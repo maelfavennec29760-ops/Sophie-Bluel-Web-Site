@@ -139,7 +139,10 @@
     background: transparent;
     cursor: pointer;
 }
-
+#validate {
+    padding-bottom: 10px;
+    font-size: 20px;
+}
 .modal-add form {
     width: 420px;
     display: flex;
@@ -165,15 +168,13 @@
     width: 420px;
     height: 169px;
     position: relative;
-    z-index: 1;
     overflow: hidden;
-    background: rgb(232,241,246);
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     gap: 10px;
-    padding-top: 10px;
-    margin-bottom: 24px;
+    background: rgb(232,241,246);
 }
 
 .upload-area i {
@@ -205,19 +206,28 @@
     height: 36px;
     border-radius: 60px;
     border: none;
-    background: rgb(167,167,167);
-    color: white;
-    font-family: inherit;
     align-self: center;
+    background: #1D6154;
+    color: #fff;
+    font-family: "Syne";
+    font-size: 14px;
+    font-weight: 700;
     cursor: pointer;
 }
 
+.modal-add form > button:disabled {
+    background: rgb(167,167,167);
+    cursor: not-allowed;
+}
+
 #preview-img {
-    width: 100%;
-    height: 100%;
+    width: 129px;
+    height: 169px;
     object-fit: cover;
+
     position: absolute;
     top: 0;
-    left: 0;
-    z-index: 2;
+    left: 50%;
+    transform: translateX(-50%);
 }
+
